@@ -4,7 +4,7 @@
       color="primary"
       dark
     >
-    Z-Todo List
+    <h1 style="margin: auto;">Z-Todo List</h1>
     </v-app-bar>
 </template>
 

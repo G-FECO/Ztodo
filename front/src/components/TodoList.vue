@@ -127,6 +127,5 @@ export default {
   height: 80%;
   margin: 5%; 
   border-style: solid;
-  border-radius: 100px;
 }
 </style>
