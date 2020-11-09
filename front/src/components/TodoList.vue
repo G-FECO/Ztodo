@@ -52,6 +52,13 @@
       </draggable>
     </div>
   </div>
+  <div class="outline1"></div>
+  <div class="outline2"></div>
+  <div class="outline3"></div>
+  <div class="outline4"></div>
+  <div class="diagonal1"></div>
+  <div class="diagonal2"></div>
+  <div class="dotDiagonal"></div>
 </div>
 </template>
 <script>
@@ -128,4 +135,65 @@ export default {
   margin: 5%; 
   border-style: solid;
 }
+
+.outline1 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 5%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.outline2 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 44.7%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.outline3 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 55%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.outline4 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 94.7%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.diagonal1 {
+  position: absolute;
+  width: 520px;
+  height: 3px;
+  top: 49.8%;
+  left: 4.6%;
+  background-color: black;
+  transform: rotate(-11.4deg);
+}
+
+.diagonal2 {
+  position: absolute;
+  width: 520px;
+  height: 3px;
+  top: 49.87%;
+  left: 44.4%;
+  background-color: black;
+  transform: rotate(-11.4deg);
+}
+
 </style>
