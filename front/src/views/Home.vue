@@ -1,9 +1,5 @@
 <template>
-  <v-row>
-    <v-col>
-      <todo-list></todo-list>
-    </v-col>
-  </v-row>
+  <todo-list></todo-list>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
-<div>
-  <div class="row">
-    <div class="col-3">
+<div class="square" align="center">
+  <div class="row inner">
+    <div class="partition">
       <h3>할 일</h3>
       <draggable class="list-group" :list="list1" group="people">
         <div
@@ -13,7 +13,7 @@
         </div>
       </draggable>
     </div>
-    <div class="col-3">
+    <div class="partition">
       <h3>진행 중</h3>
       <draggable class="list-group" :list="list2" group="people">
         <div
@@ -26,8 +26,8 @@
       </draggable>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3">
+  <div class="row inner">
+    <div class="partition">
       <h3>테스트</h3>
       <draggable class="list-group" :list="list3" group="people">
         <div
@@ -39,7 +39,7 @@
         </div>
       </draggable>
     </div>
-    <div class="col-3">
+    <div class="partition">
       <h3>완료</h3>
       <draggable class="list-group" :list="list4" group="people">
         <div
@@ -68,7 +68,7 @@ export default {
         { name: "John", id: 1 },
         { name: "Joao", id: 2 },
         { name: "Jean", id: 3 },
-        { name: "Gerard", id: 4 }
+        { name: "Gerard", id: 4 },
       ],
       list2: [
         { name: "Juan", id: 5 },
@@ -101,3 +101,32 @@ export default {
   }
 };
 </script>
+<style>
+.square {
+  width: 1024px;
+  height: 1024px;
+  position: relative;
+  margin: 3% auto;
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.inner {
+  position: relative;
+  height: 50%;
+  width: 100%;
+}
+
+.partition {
+  position: relative;
+  width: 40%;
+  height: 80%;
+  margin: 5%; 
+  border-style: solid;
+  border-radius: 100px;
+}
+</style>
