@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <nav-bar/>
-    <v-main>
+    <v-main class="bg">
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -19,3 +19,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+.bg {
+  background-color: dimgrey;
+}
+</style>
