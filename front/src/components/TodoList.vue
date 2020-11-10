@@ -1,11 +1,18 @@
 <template>
 <div class="square" align="center">
+  <img class="startline" :src="lineUrl">
+  <img class="startchar" :src="startUrl">
+  <img class="finishflag" :src="flagUrl">
+  <img class="finishchar" :src="finishUrl">
+  <div class="divideline1"></div>
+  <div class="divideline2"></div>
+  <div class="divideline3"></div>
   <div class="row inner">
     <div class="partition">
       <h3>할 일</h3>
       <draggable class="list-group" :list="list1" group="people">
         <div
-          class="list-group-item"
+          class="list-group-item fontcolor"
           v-for="(element, index) in list1"
           :key="element.name"
         >
@@ -17,7 +24,7 @@
       <h3>진행 중</h3>
       <draggable class="list-group" :list="list2" group="people">
         <div
-          class="list-group-item"
+          class="list-group-item fontcolor"
           v-for="(element, index) in list2"
           :key="element.name"
         >
@@ -31,7 +38,7 @@
       <h3>테스트</h3>
       <draggable class="list-group" :list="list3" group="people">
         <div
-          class="list-group-item"
+          class="list-group-item fontcolor"
           v-for="(element, index) in list3"
           :key="element.name"
         >
@@ -43,7 +50,7 @@
       <h3>완료</h3>
       <draggable class="list-group" :list="list4" group="people">
         <div
-          class="list-group-item"
+          class="list-group-item fontcolor"
           v-for="(element, index) in list4"
           :key="element.name"
         >
@@ -52,6 +59,13 @@
       </draggable>
     </div>
   </div>
+  <div class="outline1"></div>
+  <div class="outline2"></div>
+  <div class="outline3"></div>
+  <div class="outline4"></div>
+  <div class="diagonal1"></div>
+  <div class="diagonal2"></div>
+  <div class="dotDiagonal"></div>
 </div>
 </template>
 <script>
@@ -83,7 +97,11 @@ export default {
       list4: [
         { name: "ddd", id: 11 },
         { name: "eee", id: 12}
-      ]
+      ],
+      lineUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Race-bar.png/800px-Race-bar.png",
+      startUrl: "https://upload.wikimedia.org/wikipedia/en/8/80/Start_%28%D0%BA%D0%B8%D0%BD%D0%BE%D1%82%D0%B5%D0%B0%D1%82%D1%80%29.png",
+      flagUrl: "https://img.pngio.com/checkered-flag-finish-line-grand-free-vector-graphic-on-pixabay-race-car-starting-line-png-811_720.png",
+      finishUrl: "https://finishlinecw.com/wp-content/uploads/2017/07/Logo-FinishLine_Carwash.png",
     };
   },
   methods: {
@@ -109,11 +127,6 @@ export default {
   margin: 3% auto;
 }
 
-.square:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
 
 .inner {
   position: relative;
@@ -127,5 +140,143 @@ export default {
   height: 80%;
   margin: 5%; 
   border-style: solid;
+  justify-content:center;
+  align-content:center;
+  display:grid;
+  overflow: auto;
+  background-color:grey;
+  border-color: black;
+}
+
+.outline1 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 5%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.outline2 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 44.7%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.outline3 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 55%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.outline4 {
+  position: absolute;
+  width: 105px;
+  height: 3px;
+  top: 94.7%;
+  left: 45%;
+  background-color: black;
+  transform: rotate();
+}
+
+.diagonal1 {
+  position: absolute;
+  width: 520px;
+  height: 3px;
+  top: 49.8%;
+  left: 4.6%;
+  background-color: black;
+  transform: rotate(-11.4deg);
+}
+
+.diagonal2 {
+  position: absolute;
+  width: 520px;
+  height: 3px;
+  top: 49.87%;
+  left: 44.4%;
+  background-color: black;
+  transform: rotate(-11.4deg);
+}
+
+.startline {
+  position: absolute;
+  transform: rotate(90deg);
+  width: 35%;
+  top: 23%;
+  left: -16%;
+}
+
+.startchar {
+  position: absolute;
+  transform: rotate(90deg);
+  width: 18%;
+  top: 21%;
+  left: -15%;
+}
+
+.finishflag {
+  -moz-transform: scaleX(-1); 
+  -o-transform: scaleX(-1); 
+  -webkit-transform: scaleX(-1); 
+  transform: scaleX(-1);
+  position: absolute;
+  width: 13%;
+  top: 70%;
+  left: 105%;
+}
+
+.finishchar {
+  position: absolute;
+  width: 30%;
+  top: 73%;
+  left: 85%;
+  transform: rotate(90deg);
+}
+
+.divideline1 {
+  position: absolute;
+  width: 400px;
+  height: 3px;
+  top: 24.7%;
+  left: 30.5%;
+  border-style: dashed;
+  border-color: whitesmoke;
+  transform: rotate(90deg);
+}
+
+.divideline2 {
+  position: absolute;
+  width: 400px;
+  height: 3px;
+  top: 74.7%;
+  left: 30.5%;
+  border-style: dashed;
+  border-color: whitesmoke;
+  transform: rotate(90deg);
+}
+
+.divideline3 {
+  position: absolute;
+  width: 520px;
+  height: 3px;
+  top: 50%;
+  left: 20%;
+  border-style: dashed;
+  border-color: whitesmoke;
+  transform: rotate(-11.4deg);
+}
+
+.fontcolor {
+  color:whitesmoke;
 }
 </style>
