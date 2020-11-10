@@ -12,7 +12,7 @@
       <h3>할 일</h3>
       <draggable class="list-group" :list="list1" group="people">
         <div
-          class="list-group-item fontcolor"
+          class="list-group-item listitem"
           v-for="(element, index) in list1"
           :key="element.name"
         >
@@ -20,11 +20,66 @@
         </div>
       </draggable>
     </div>
+    <div class="addbutton">
+      <v-dialog
+        v-model="dialog"
+        persistent
+        max-width="30%"
+      >
+          <template v-slot:activator="{on, attrs}">
+            <v-btn
+              class="mx-2"
+              fab
+              dark
+              color="indigo"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon dark>mdi-plus</v-icon>
+            </v-btn>
+          </template>
+        <v-card>
+          <v-card-title>
+            <span class="headline">할 일 추가</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    label="할 일이 뭔가요?"
+                    v-model="todo"
+                  >
+                  </v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click="dialog=false"
+            >
+              닫기
+            </v-btn>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click="addTodo()"
+            >
+              추가
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
     <div class="partition">
       <h3>진행 중</h3>
       <draggable class="list-group" :list="list2" group="people">
         <div
-          class="list-group-item fontcolor"
+          class="list-group-item listitem"
           v-for="(element, index) in list2"
           :key="element.name"
         >
@@ -38,7 +93,7 @@
       <h3>테스트</h3>
       <draggable class="list-group" :list="list3" group="people">
         <div
-          class="list-group-item fontcolor"
+          class="list-group-item listitem"
           v-for="(element, index) in list3"
           :key="element.name"
         >
@@ -50,7 +105,7 @@
       <h3>완료</h3>
       <draggable class="list-group" :list="list4" group="people">
         <div
-          class="list-group-item fontcolor"
+          class="list-group-item listitem"
           v-for="(element, index) in list4"
           :key="element.name"
         >
@@ -102,6 +157,8 @@ export default {
       startUrl: "https://upload.wikimedia.org/wikipedia/en/8/80/Start_%28%D0%BA%D0%B8%D0%BD%D0%BE%D1%82%D0%B5%D0%B0%D1%82%D1%80%29.png",
       flagUrl: "https://img.pngio.com/checkered-flag-finish-line-grand-free-vector-graphic-on-pixabay-race-car-starting-line-png-811_720.png",
       finishUrl: "https://finishlinecw.com/wp-content/uploads/2017/07/Logo-FinishLine_Carwash.png",
+      dialog: false,
+      todo: "",
     };
   },
   methods: {
@@ -116,6 +173,11 @@ export default {
         name: el.name + " cloned"
       };
     },
+    addTodo: function() {
+      this.list1.push({ name: this.todo });
+      this.dialog=false;
+      this.todo="";
+    }
   }
 };
 </script>
@@ -276,7 +338,14 @@ export default {
   transform: rotate(-11.4deg);
 }
 
-.fontcolor {
+.listitem {
   color:whitesmoke;
+  cursor: pointer;
+}
+
+.addbutton {
+  position: absolute;
+  top: 12%;
+  left: 5%;
 }
 </style>
