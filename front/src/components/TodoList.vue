@@ -15,6 +15,7 @@
           class="list-group-item listitem"
           v-for="(element, index) in list1"
           :key="element.name"
+          @click="detailInfo(index, 1)"
         >
           {{ element.name }} {{ index }}
         </div>
@@ -26,18 +27,18 @@
         persistent
         max-width="30%"
       >
-          <template v-slot:activator="{on, attrs}">
-            <v-btn
-              class="mx-2"
-              fab
-              dark
-              color="indigo"
-              v-bind="attrs"
-              v-on="on"
-            >
-              <v-icon dark>mdi-plus</v-icon>
-            </v-btn>
-          </template>
+        <template v-slot:activator="{on, attrs}">
+          <v-btn
+            class="mx-2"
+            fab
+            dark
+            color="indigo"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon dark>mdi-plus</v-icon>
+          </v-btn>
+        </template>
         <v-card>
           <v-card-title>
             <span class="headline">할 일 추가</span>
@@ -82,6 +83,7 @@
           class="list-group-item listitem"
           v-for="(element, index) in list2"
           :key="element.name"
+          @click="detailInfo(index, 2)"
         >
           {{ element.name }} {{ index }}
         </div>
@@ -96,6 +98,7 @@
           class="list-group-item listitem"
           v-for="(element, index) in list3"
           :key="element.name"
+          @click="detailInfo(index, 3)"
         >
           {{ element.name }} {{ index }}
         </div>
@@ -108,11 +111,37 @@
           class="list-group-item listitem"
           v-for="(element, index) in list4"
           :key="element.name"
+          @click="detailInfo(index, 4)"
         >
           {{ element.name }} {{ index }}
         </div>
       </draggable>
     </div>
+    <v-dialog
+      v-model="detailDialog"
+      max-width="20%"
+    >
+      <v-card>
+        <v-card-title>
+          <span>상세 정보</span>
+        </v-card-title>
+        <v-card-text>
+          {{this.todoInfo}}
+        </v-card-text>
+        <v-card-actions>
+          <v-btn
+            color="primary"
+            text
+            @click="closeDialog()"
+          >돌아가기</v-btn>
+          <v-btn
+            color="primary"
+            text
+            @click="removeTodo()"
+          >삭제하기</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
   <div class="outline1"></div>
   <div class="outline2"></div>
@@ -158,7 +187,10 @@ export default {
       flagUrl: "https://img.pngio.com/checkered-flag-finish-line-grand-free-vector-graphic-on-pixabay-race-car-starting-line-png-811_720.png",
       finishUrl: "https://finishlinecw.com/wp-content/uploads/2017/07/Logo-FinishLine_Carwash.png",
       dialog: false,
+      detailDialog: false,
       todo: "",
+      todoInfo: "",
+      listNum: 0,
     };
   },
   methods: {
@@ -174,9 +206,21 @@ export default {
       };
     },
     addTodo: function() {
-      this.list1.push({ name: this.todo });
-      this.dialog=false;
-      this.todo="";
+      if(this.todo === "") {
+        alert("할 일을 써주세요!");
+        return;
+      } else {
+        this.list1.push({ name: this.todo });
+        this.dialog=false;
+        this.todo="";
+      }
+    },
+    detailInfo: function(idx, listIdx){
+      this.detailDialog = true;
+      // if(listIdx == 1)
+      // if(listIdx == 1) {
+      //   this.list1.splice(idx, 1);
+      // }
     }
   }
 };
